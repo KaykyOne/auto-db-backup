@@ -10,6 +10,9 @@
   "description": "",
   "dependencies": {
     "dotenv": "^17.2.3",
-    "dropbox": "^10.34.0"
+    "dropbox": "^10.34.0",
+    "node-cron": "^4.2.1",
+    "node-fetch": "^3.3.2",
+    "pino": "^10.3.0"
   }
 }
