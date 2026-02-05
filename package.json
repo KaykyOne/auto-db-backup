@@ -1,0 +1,15 @@
+{
+  "name": "backup-automatico-postgress",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "dropbox": "^10.34.0"
+  }
+}
