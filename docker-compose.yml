@@ -1,0 +1,15 @@
+services:
+  backup:
+    build: .
+    container_name: backup-automatico-postgress
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      - backup-network
+
+networks:
+  backup-network:
+    driver: bridge
