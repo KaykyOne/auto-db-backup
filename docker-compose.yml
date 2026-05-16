@@ -5,8 +5,11 @@ services:
     restart: unless-stopped
     env_file:
       - .env
+
     volumes:
       - ./logs:/app/logs
+      - ./backups:/app/backups
+      
     networks:
       - backup-network
 

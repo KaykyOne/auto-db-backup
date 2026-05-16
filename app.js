@@ -10,6 +10,8 @@ import axios from 'axios';
 
 dotenv.config();
 
+fs.mkdirSync('./backups', { recursive: true });
+
 const DB_URL = process.env.DATABASE_URL;
 const pgDumpPath = process.env.PG_DUMP_PATH;
 const DROPBOX_REFRESH_TOKEN = process.env.DROPBOX_REFRESH_TOKEN;
@@ -17,6 +19,8 @@ const DROPBOX_CLIENT_ID = process.env.DROPBOX_CLIENT_ID;
 const DROPBOX_CLIENT_SECRET = process.env.DROPBOX_CLIENT_SECRET;
 
 let cachedToken = null;
+
+console.log('Variáveis de ambiente carregadas');
 
 const validVariables = () => {
   let valid = true;
@@ -40,6 +44,8 @@ const validVariables = () => {
 
   return valid;
 };
+
+console.log("iniciado");
 
 const getDropboxAccessToken = async () => {
   const res = await axios.post("https://api.dropbox.com/oauth2/token", null, {
@@ -95,6 +101,10 @@ const generateBackup = async () => {
 };
 
 const uploadToDropbox = async (filename, localPath) => {
+
+  if(process.env.producao == true) {
+    logger.info('[DROPBOX] Iniciando upload para Dropbox...');
+  }
   try {
     let dbx = await getDropboxClient();
 
